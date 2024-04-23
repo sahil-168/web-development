@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title> car</title>
+</head>
+<body>
+    <div id="mycar"  style="position: absolute; left: -60px; width: 200px;top: 0px; "><img src="car.jpeg" alt="" height="120px"width="300px" >
+    </div>
+    <div  style="height: 50px; 
+                width: 500px;
+                 background-color: black; 
+                 position: absolute; 
+                 left: 0px; 
+                 top: 110px;">
+       
+    </div>
+       <br><br><br><br><br><br><br><br><br><br>
+    <b>Xaxis :</b>  
+    <!-- <div id="xdiv" style= color:red">  </div> -->
+    <input type="text" value="" id="xdiv" style="color: red;" >
+
+    <br><br>
+    <b>yaxis :  
+        <!-- <div id="ydiv" style= color:red">  </div></b> -->
+    <input type="text" id="ydiv" value="" style="color: red;">
+   
+    <br><br>
+    <input id="inputstart"   type="button" value="Move" onclick="move()"  style="width: 150px; height: 50px ; background-color: blue;color: white;">
+    <input id="inputstop"  type="button" value="Stop" onclick="stop()"  style="width: 150px; height: 50px; background-color: blue; color: white;">
+    <script>
+        var topval=0;
+        var leftval=-31;
+        var arrayofqueues =  new Array();
+
+
+        function move(){
+            debugger
+           var qno = window.setInterval(keepmoving,100);
+           arrayofqueues.push(qno);
+
+        }
+        function stop(){
+            for(var i=0;i<arrayofqueues.length;i++){
+                    var qtostop= arrayofqueues[i];
+                    clearInterval(qtostop);
+                }
+        }
+
+        function keepmoving(){
+            debugger
+            leftval=leftval+10;
+            var refxaxis=document.getElementById("xdiv");
+
+            if(leftval<469){
+                var reftomydiv= document.getElementById("mycar");
+
+                if(reftomydiv!= null){
+                    reftomydiv.style.left= leftval+"px";
+                    refxaxis.value=leftval;
+                    
+                }
+            }    
+                  
+            else {
+                debugger
+                window.setInterval(keepdrop,100); 
+               
+            }
+        }
+
+        function keepdrop(){
+            topval= topval+5;
+            leftval=leftval+7;
+            if(topval<1100 && leftval<1700){
+                var reftomydiv= document.getElementById("mycar"); 
+                 var refyaxis=document.getElementById("ydiv"); 
+                    reftomydiv.style.top= topval+"px";
+                    reftomydiv.style.left= leftval+"px"; 
+                    reftomydiv.style.rotate="30deg"
+                   refyaxis.value= topval;
+                //    refxaxis.innerText=topval; incase of division use innertxt
+            }
+                
+
+                    
+         }
+
+        // function dochange(){
+        //    var reftoinput=document.getElementById("inputstart");
+           
+        //    reftoinput.style.backgroundColor="red";
+
+           
+        // }
+        // function dorevert(){
+        //     var reftoinput=document.getElementById("inputstart");
+        //    reftoinput.style.backgroundColor="blue";
+        // }
+    </script>
+
+
+</body>
+</html>
