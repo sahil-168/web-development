@@ -1,0 +1,231 @@
+<html>
+<head>
+    <title>add</title>
+    <style>
+    
+         body{
+            background-image: url(logo.jpg) ;
+            background-size: 100%;
+           
+         }
+    </style>
+</head>
+<!-- <body  style="background-image: url(logo.jpg) ; background-size: 100%;"   -->
+  
+    <center>
+        <h1 style="padding-top: 100px; padding-right: 50px;color: blue;">Calculator</h1>
+    <table >
+       
+        <tbody>
+            
+              <br>
+                <tr>
+                    <td style="color: white;">X:</td>
+                    <td style="width: 100px;"><input type="text" id="idx"></td>
+                    <td style="width: 80px;"> <div style="color: red;" id="errorx"></div></td>
+                </tr>
+                     <br>
+                <tr>
+                    <td style="color: white;">Y:</td>
+                    <td ><input type="text" id="idy"></td>
+                    <td > <div style="color: red;" id="errory"></div></td>
+                </tr>
+                
+                <tr>
+                    <td style="color: white;" >Result: </td>
+                    <td colspan="2" style="color: white;"><div id="idresult"></div></td>
+                </tr>
+
+                
+           
+           
+        </tbody>
+    
+    </table>
+    <br>
+    <table>
+        <tbody>
+            <tr>
+                
+                    <td ><input type="button" value="Addition" onclick="add()" ></td>
+                    <td> <input type="button" value="Substraction" onclick="sub()"></td>
+                    <td><input type="button" value="Multiplication" onclick="mul()"></td>
+                    <td><input type="button" value="Division" onclick="div()"></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</center>
+
+   <script>
+    function add(){
+        debugger
+        var x =document.getElementById("idx");
+        var y =document.getElementById("idy");
+        var r= document.getElementById("idresult");
+
+        var isxnumber=false;
+        var isynumber=false;
+        var isxboxempty=isEmpty("idx","errorx","x is required");
+        if(isxboxempty==false){
+            isxnumber=isitnumber("idx","errorx","x should be numnber");
+
+        var isyboxempty=isEmpty("idy","errory","y is required");
+            if(isyboxempty==false){
+                isynumber=isitnumber("idy","errory","y should be number");
+            }
+
+            if(isxnumber==true && isynumber==true){
+                var xdata=parseInt(x.value);
+                var ydata=parseInt(y.value);
+
+                var result =xdata+ydata;
+                r.innerText=result;
+            }
+            else{
+                r.innerText="";
+            }
+        }
+
+
+    }
+    function sub(){
+        debugger
+        var x =document.getElementById("idx");
+        var y =document.getElementById("idy");
+        var r= document.getElementById("idresult");
+
+        var isxnumber=false;
+        var isynumber=false;
+        var isxboxempty=isEmpty("idx","errorx","x is required");
+        if(isxboxempty==false){
+            isxnumber=isitnumber("idx","errorx","x should be numnber");
+
+        var isyboxempty=isEmpty("idy","errory","y is required");
+            if(isyboxempty==false){
+                isynumber=isitnumber("idy","errory","y should be number");
+            }
+
+            if(isxnumber==true && isynumber==true){
+                var xdata=parseInt(x.value);
+                var ydata=parseInt(y.value);
+
+                var result =xdata-ydata;
+                r.innerText=result;
+            }
+            else{
+                r.innerText="";
+            }
+        }
+
+
+    }
+    function mul(){
+        debugger
+        var x =document.getElementById("idx");
+        var y =document.getElementById("idy");
+        var r= document.getElementById("idresult");
+
+        var isxnumber=false;
+        var isynumber=false;
+        var isxboxempty=isEmpty("idx","errorx","x is required");
+        if(isxboxempty==false){
+            isxnumber=isitnumber("idx","errorx","x should be numnber");
+
+        var isyboxempty=isEmpty("idy","errory","y is required");
+            if(isyboxempty==false){
+                isynumber=isitnumber("idy","errory","y should be number");
+            }
+
+            if(isxnumber==true && isynumber==true){
+                var xdata=parseInt(x.value);
+                var ydata=parseInt(y.value);
+
+                var result =xdata*ydata;
+                r.innerText=result;
+            }
+            else{
+                r.innerText="";
+            }
+        }
+
+
+    }
+    function div(){
+        debugger
+        var x =document.getElementById("idx");
+        var y =document.getElementById("idy");
+        var r= document.getElementById("idresult");
+
+        var isxnumber=false;
+        var isynumber=false;
+        var isxboxempty=isEmpty("idx","errorx","x is required");
+        if(isxboxempty==false){
+            isxnumber=isitnumber("idx","errorx","x should be numnber");
+
+        var isyboxempty=isEmpty("idy","errory","y is required");
+            if(isyboxempty==false){
+                isynumber=isitnumber("idy","errory","y should be number");
+            }
+
+            if(isxnumber==true && isynumber==true){
+                var xdata=parseInt(x.value);
+                var ydata=parseInt(y.value);
+
+                var result =xdata/ydata;
+                r.innerText=result;
+            }
+            else{
+                r.innerText="";
+            }
+        }
+
+
+    }
+
+
+
+
+    function isitnumber(controlid,errorid,errormsg){
+        debugger
+          var reference = document.getElementById(controlid);
+          var errref = document.getElementById(errorid);
+          var isitnumber=false;
+
+          
+        var isxvalue=isNaN(reference.value);
+        if(isxvalue==true){
+            errref.innerText=errormsg;
+        
+            isitnumber=false;
+        }
+        else{
+            errref.innerText="";
+            console.log(reference.value);
+            isitnumber=true;
+        }
+
+        return isitnumber;
+    }
+
+    function isEmpty(id,error,msg){
+        debugger
+        var ref = document.getElementById(id);
+        var err = document.getElementById(error);
+         var isboxempty =true;
+        var ref1= ref.value;
+        if(ref1 != ""){
+            err.innerText="";
+            console.log(ref1);
+            isboxempty=false;
+        }
+        else{
+            err.innerText=msg;
+            isboxempty=true;
+        }
+        return isboxempty;
+      
+    }
+   </script>
+</body>
+</html>
